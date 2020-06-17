@@ -1,4 +1,4 @@
-package com.integralnutry.app.integralnutry;
+package com.integralnutry.app;
 
 import io.flutter.embedding.android.FlutterActivity;
 
