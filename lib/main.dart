@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integral_nutry/shared/widgets/label.dart';
 
 void main() {
   runApp(Application());
@@ -30,15 +31,21 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Theme.of(context).primaryColor,
       child: Center(
-        child: Text(
-          "Hello World!",
-          style: TextStyle(
-            decoration: TextDecoration.none,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.normal,
-            color: Colors.white
-          ),
-        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Label("Hello World!"),
+            Label.rich(
+              TextSpan(
+                text: "Hello",
+                children: <InlineSpan>[
+                  TextSpan(text: " World", style: TextStyle( fontWeight: FontWeight.bold ))
+                ]
+              )
+            ),
+          ],
+        )
       ),
     );
   }
