@@ -7,7 +7,12 @@ class LoginScreen extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/gifs/background.gif"),
+          fit: BoxFit.cover
+        )
+      ),
       child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
