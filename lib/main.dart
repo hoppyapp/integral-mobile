@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:integral_nutry/shared/system.dart';
 import 'package:integral_nutry/shared/widgets/label.dart';
 
 void main() {
+
+  setSystemBarStyle();
+
   runApp(Application());
 }
 
