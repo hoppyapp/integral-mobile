@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integral_nutry/screens/init.dart';
 import 'package:integral_nutry/shared/system.dart';
 import 'package:integral_nutry/shared/widgets/label.dart';
 
@@ -23,34 +24,10 @@ class Application extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).primaryColor,
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Label("Hello World!"),
-            Label.rich(
-              TextSpan(
-                text: "Hello",
-                children: <InlineSpan>[
-                  TextSpan(text: " World", style: TextStyle( fontWeight: FontWeight.bold ))
-                ]
-              )
-            ),
-          ],
-        )
-      ),
+      initialRoute: "/login",
+      routes: {
+        "/login": (BuildContext context) => Login()
+      },
     );
   }
 }
