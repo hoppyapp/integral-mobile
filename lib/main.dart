@@ -24,9 +24,9 @@ class Application extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: "/login",
+      initialRoute: Login.route,
       routes: {
-        "/login": (BuildContext context) => Login()
+        Login.route: (BuildContext context) => Login()
       },
     );
   }
