@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:integral_nutry/screens/init.dart';
 import 'package:integral_nutry/screens/login/constants.dart';
+import 'package:integral_nutry/shared/arquitecture.dart';
 import 'package:integral_nutry/shared/widgets/label.dart';
 
 import 'login_controller.dart';
@@ -10,7 +11,7 @@ import 'login_controller.dart';
 class LoginScreen extends State<Login> {
 
   // Attributes
-  LoginController _controller;
+  LoginControl _controller;
 
   @override
   void initState() {

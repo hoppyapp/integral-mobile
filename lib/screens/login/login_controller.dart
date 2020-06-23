@@ -8,24 +8,24 @@ import 'package:integral_nutry/shared/arquitecture.dart';
 class _LoginStreams implements Controller {
 
   /// Stream to login status
-  StreamController<login_status> _statusStream = StreamController.broadcast();
+  StreamController<VisibilityAction> _visibilityStream = StreamController.broadcast();
   /// Current login status
-  login_status _status = login_status.loading;
+  VisibilityAction _visibility = VisibilityAction.hideLogin;
 
   /// Constructor
   _LoginStreams() {
     // Listen and update current login status
-    _statusStream.stream.listen((login_status status) {
-      _status = status;
+    _visibilityStream.stream.listen((VisibilityAction visibility) {
+      _visibility = visibility;
     });
   }
 
   @override
   void dispose() async {
-    if(_statusStream != null) {
-      await _statusStream.close();
-      _statusStream = null;
-      _status = null;
+    if(_visibilityStream != null) {
+      await _visibilityStream.close();
+      _visibilityStream = null;
+      _visibility = null;
     }
   }
 }
@@ -35,16 +35,12 @@ class LoginController extends _LoginStreams implements LoginControl {
 
   @override
   /// Get login status stream
-  Stream<login_status> get statusStream => super._statusStream.stream;
-
-  @override
-  /// Get login status current
-  login_status get status => super._status;
+  Stream<VisibilityAction> get visibilityStream => super._visibilityStream.stream;
 
   LoginController(): super() {
 
     Future.delayed(Duration(seconds: 5), () {
-      super._statusStream.add(login_status.login);
+      super._visibilityStream.add(VisibilityAction.showLogin);
     });
   }
 

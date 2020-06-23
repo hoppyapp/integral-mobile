@@ -8,7 +8,6 @@ abstract class Controller {
 
 abstract class LoginControl implements Controller {
 
-  Stream<login_status> get statusStream;
-  login_status get status;
+  Stream<VisibilityAction> get visibilityStream;
 
 }

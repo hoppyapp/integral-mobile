@@ -1,5 +1,6 @@
-enum login_status {
-  loading,
-  logged,
-  login
+enum VisibilityAction {
+  showLogin,
+  hideLogin,
+  showRegister,
+  hideRegister
 }
