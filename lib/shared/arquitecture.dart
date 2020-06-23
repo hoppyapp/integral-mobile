@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:integral_nutry/screens/login/constants.dart';
+import 'package:integral_nutry/screens/access/constants.dart';
 
 abstract class Controller {
 
@@ -7,16 +7,16 @@ abstract class Controller {
 
 }
 
-abstract class LoginView {
+abstract class AccessView {
 
   Widget buildControl();
 
 }
 
-abstract class LoginControl implements Controller {
+abstract class AccessControl implements Controller {
 
   Stream<VisibilityAction> get visibilityStream;
 
-  Widget loadControl();
+  Widget loadControl(AsyncSnapshot<VisibilityAction> snapshot);
 
 }

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:integral_nutry/screens/login/constants.dart';
+import 'package:integral_nutry/screens/access/constants.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
 
 
@@ -33,9 +33,9 @@ class _LoginStreams implements Controller {
 }
 
 /// Login Controller
-class LoginController extends _LoginStreams implements LoginControl {
+class LoginController extends _LoginStreams implements AccessControl {
 
-  final LoginView _view;
+  final AccessView _view;
 
   @override
   /// Get login status stream
@@ -50,7 +50,7 @@ class LoginController extends _LoginStreams implements LoginControl {
 
   @override
   Widget loadControl(AsyncSnapshot<VisibilityAction> snapshot) {
-    throw UnimplementedError();
+    return _view.buildControl();
   }
 
 

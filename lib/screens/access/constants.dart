@@ -4,3 +4,8 @@ enum VisibilityAction {
   showRegister,
   hideRegister
 }
+
+enum Login {
+  google,
+  facebook
+}

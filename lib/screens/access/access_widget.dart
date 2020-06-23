@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:integral_nutry/screens/init.dart';
-import 'package:integral_nutry/screens/login/constants.dart';
+import 'package:integral_nutry/screens/access/constants.dart';
+import 'package:integral_nutry/screens/access/access_controller.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
 
-import 'login_controller.dart';
-
 /// Login Screen
-class LoginScreen extends State<Login> implements LoginView {
+class AccessScreen extends State<Access> implements AccessView {
 
   // Attributes
-  LoginControl _controller;
+  AccessControl _controller;
 
   @override
   void initState() {

@@ -27,11 +27,11 @@ class Application extends StatelessWidget {
         ),
 
         // Screen initial
-        initialRoute: Login.route,
+        initialRoute: Access.route,
 
         // Screens map (routes)
         routes: {
-          Login.route: (BuildContext context) => Login()
+          Access.route: (BuildContext context) => Access()
         },
       ),
     );
