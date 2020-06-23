@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:integral_nutry/screens/login/constants.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
 
@@ -33,18 +35,25 @@ class _LoginStreams implements Controller {
 /// Login Controller
 class LoginController extends _LoginStreams implements LoginControl {
 
+  final LoginView _view;
+
   @override
   /// Get login status stream
   Stream<VisibilityAction> get visibilityStream => super._visibilityStream.stream;
 
-  LoginController(): super() {
+  LoginController(this._view): super() {
 
     Future.delayed(Duration(seconds: 5), () {
       super._visibilityStream.add(VisibilityAction.showLogin);
     });
   }
 
-  
+  @override
+  Widget loadControl(AsyncSnapshot<VisibilityAction> snapshot) {
+    throw UnimplementedError();
+  }
+
+
   @override
   void dispose() {
     super.dispose();
