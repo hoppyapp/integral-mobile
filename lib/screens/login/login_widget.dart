@@ -3,12 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:integral_nutry/screens/init.dart';
 import 'package:integral_nutry/screens/login/constants.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
-import 'package:integral_nutry/shared/widgets/label.dart';
 
 import 'login_controller.dart';
 
 /// Login Screen
-class LoginScreen extends State<Login> {
+class LoginScreen extends State<Login> implements LoginView {
 
   // Attributes
   LoginControl _controller;
@@ -18,7 +17,7 @@ class LoginScreen extends State<Login> {
     super.initState();
 
     // Start controller
-    if(_controller == null) _controller = LoginController();
+    if(_controller == null) _controller = LoginController(this);
   }
 
   @override
@@ -58,10 +57,40 @@ class LoginScreen extends State<Login> {
           // Control container
           Container(
             height: controlContainerHeight,
-            child: Container(),
+            child: StreamBuilder<VisibilityAction>(
+              stream: _controller.visibilityStream,
+              builder: (BuildContext context, AsyncSnapshot<VisibilityAction> snapshot) {
+                return _controller.loadControl(snapshot);
+              }
+            ),
           ),
         ],
       )
     );
   }
+
+  @override
+  Widget buildControl({ show = true, register = false, Function() onEnd }) {
+
+    return TweenAnimationBuilder<double>(
+      tween: show ? Tween(begin: 0, end: 1) : Tween(begin: 1, end: 0),
+      duration: Duration(milliseconds: 500), 
+      builder: (BuildContext context, double animation, Widget child) {
+        return Opacity(
+          opacity: animation,
+          child: Container(
+            margin: EdgeInsets.only(top: 100 * (1 - animation)),
+            child: () {
+              if(register) {
+                return Container();
+              } else {
+                return Container();
+              }
+            } ()
+          ),
+        );
+      }
+    );
+  }
+  
 }
