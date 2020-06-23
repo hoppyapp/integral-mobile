@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:integral_nutry/screens/init.dart';
 import 'package:integral_nutry/screens/login/constants.dart';
 import 'package:integral_nutry/shared/widgets/label.dart';
 
 import 'login_controller.dart';
 
+/// Login Screen
 class LoginScreen extends State<Login> {
 
+  // Attributes
   LoginController _controller;
 
   @override
   void initState() {
     super.initState();
 
+    // Start controller
     if(_controller == null) _controller = LoginController();
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final double logoContainerHeight = MediaQuery.of(context).size.height * 0.45;
+    final double controlContainerHeight = MediaQuery.of(context).size.height * 0.55;
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -25,69 +33,34 @@ class LoginScreen extends State<Login> {
           fit: BoxFit.cover
         )
       ),
-      child: StreamBuilder<login_status>(
-        initialData: _controller.status,
-        stream: _controller.statusStream,
-        builder: (BuildContext context, AsyncSnapshot<login_status> snapshot) {
+      child: Column(
+        children: <Widget>[
 
-          if(!snapshot.hasData) return Container();
-
-          switch(snapshot.data) {
-            case login_status.loading:
-              return _buildLogin();
-
-            case login_status.logged:
-              return _buildLogin();
-
-            case login_status.login:
-              return _buildLogin(show: true);
-
-            default: throw Exception();
-          }
-        },
-      )
-    );
-  }
-
-  Widget _buildLogin({ bool show = false}) {
-
-    print("[ LOGIN SCREEN ] method(_buildLogin)");
-
-    return Center(
-      child: AnimatedOpacity(
-        duration: Duration(seconds: 1),
-        opacity: show ? 1 : 0,
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Center(
-                child: Container(
-                  child: Label("Logo IntegralNutry"),
-                ),
+          // Logo container
+          Container(
+            height: logoContainerHeight,
+            child: Center(
+              child: TweenAnimationBuilder<double>(
+                tween: Tween<double>(begin: 0, end: 1), 
+                duration: Duration(milliseconds: 500),
+                child: SvgPicture.asset("assets/images/svg/logo.svg", height: 70), 
+                builder: (BuildContext context, double opacity, Widget child) {
+                  return Opacity(
+                    opacity: opacity,
+                    child: child,
+                  );
+                }
               ),
             ),
-            Expanded(
-              flex: 4,
-              child: Center(
-                child: AnimatedContainer(
-                  duration: Duration(seconds: 1),
-                  padding: EdgeInsets.only(top: show ? 0 : 50),
-                  height: 100,
-                  child: Column(
-                    children: <Widget>[
-                      Label("Login Google"),
-                      Label("Login Facebook")
-                    ],
-                  ),
-                ),
-              )
-            ),
-          ],
-        )
+          ),
+
+          // Control container
+          Container(
+            height: controlContainerHeight,
+            child: Container(),
+          ),
+        ],
       )
     );
-
   }
-
 }
