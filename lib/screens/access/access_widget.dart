@@ -21,7 +21,9 @@ class AccessScreen extends State<Access> implements AccessView {
 
   @override
   Widget build(BuildContext context) {
+    print("Builded");
 
+    final double logoWidth = MediaQuery.of(context).size.width * 0.8;
     final double logoContainerHeight = MediaQuery.of(context).size.height * 0.45;
     final double controlContainerHeight = MediaQuery.of(context).size.height * 0.55;
 
@@ -41,9 +43,12 @@ class AccessScreen extends State<Access> implements AccessView {
             child: Center(
               child: TweenAnimationBuilder<double>(
                 tween: Tween<double>(begin: 0, end: 1), 
-                duration: Duration(milliseconds: 500),
-                child: SvgPicture.asset("assets/images/svg/logo.svg", height: 70), 
+                duration: Duration(milliseconds: 1000),
+                child: SvgPicture.asset("assets/images/svg/logo.svg", width: logoWidth), 
                 builder: (BuildContext context, double opacity, Widget child) {
+
+                  print("opacity logo: $opacity");
+
                   return Opacity(
                     opacity: opacity,
                     child: child,
