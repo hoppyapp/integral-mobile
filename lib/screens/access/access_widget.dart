@@ -47,8 +47,6 @@ class AccessScreen extends State<Access> implements AccessView {
                 child: SvgPicture.asset("assets/images/svg/logo.svg", width: logoWidth), 
                 builder: (BuildContext context, double opacity, Widget child) {
 
-                  print("opacity logo: $opacity");
-
                   return Opacity(
                     opacity: opacity,
                     child: child,
