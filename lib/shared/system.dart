@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 void setSystemBarStyle({ bool isDark = true }) {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+    statusBarBrightness: isDark ? Brightness.light : Brightness.dark,
     statusBarIconBrightness: isDark ? Brightness.dark : Brightness.light,
     statusBarColor: Colors.transparent,
     systemNavigationBarColor: Colors.white,
