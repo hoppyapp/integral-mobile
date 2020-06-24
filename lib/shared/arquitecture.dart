@@ -9,7 +9,7 @@ abstract class Controller {
 
 abstract class AccessView {
 
-  Widget buildControl();
+  Widget buildControl({ bool show = true, bool register = false, Function() onEnd });
 
 }
 
@@ -18,5 +18,9 @@ abstract class AccessControl implements Controller {
   Stream<VisibilityAction> get visibilityStream;
 
   Widget loadControl(AsyncSnapshot<VisibilityAction> snapshot);
+
+  void testRegister();
+
+  void textLogin();
 
 }

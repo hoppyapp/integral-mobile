@@ -36,6 +36,7 @@ class _LoginStreams implements Controller {
 class LoginController extends _LoginStreams implements AccessControl {
 
   final AccessView _view;
+  bool autoLogin = true;
 
   @override
   /// Get login status stream
@@ -50,6 +51,25 @@ class LoginController extends _LoginStreams implements AccessControl {
 
   @override
   Widget loadControl(AsyncSnapshot<VisibilityAction> snapshot) {
+
+    if(!snapshot.hasData) return Container();
+
+    switch(snapshot.data) {
+
+      case VisibilityAction.hideLogin: return _view.buildControl(show: false, onEnd: () {
+        super._visibilityStream.add(VisibilityAction.showRegister);
+      });
+
+      case VisibilityAction.showLogin: return _view.buildControl(show: true);
+
+      case VisibilityAction.hideRegister: return _view.buildControl(show: false, register: true, onEnd: () {
+        super._visibilityStream.add(VisibilityAction.showLogin);
+      });
+
+      case VisibilityAction.showRegister: return _view.buildControl(show: true, register: true);
+
+    }
+
     return _view.buildControl();
   }
 
@@ -57,6 +77,16 @@ class LoginController extends _LoginStreams implements AccessControl {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  @override
+  void testRegister() {
+    super._visibilityStream.add(VisibilityAction.hideLogin);
+  }
+
+  @override
+  void textLogin() {
+    super._visibilityStream.add(VisibilityAction.hideRegister);
   }
   
 }
