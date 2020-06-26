@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:integral_nutry/screens/access/widgets/login_button.dart';
+import 'package:integral_nutry/screens/access/widgets/regiter_input.dart';
 import 'package:integral_nutry/screens/init.dart';
 import 'package:integral_nutry/screens/access/constants.dart';
 import 'package:integral_nutry/screens/access/access_controller.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
+import 'package:integral_nutry/shared/widgets/label.dart';
 
 /// Login Screen
 class AccessScreen extends State<Access> implements AccessView {
@@ -84,9 +86,6 @@ class AccessScreen extends State<Access> implements AccessView {
 
   @override
   Widget buildControl({ bool show = true, bool register = false, Function() onEnd }) {
-
-
-
     return TweenAnimationBuilder<double>(
       tween: show ? Tween(begin: 0, end: 1) : Tween(begin: 1, end: 0),
       duration: Duration(milliseconds: 500),
@@ -101,7 +100,7 @@ class AccessScreen extends State<Access> implements AccessView {
               if(register) {
 
                 // Build register 
-                return Container();
+                return _buildRegisterControl();
               } else {
 
                 // Build login
@@ -116,9 +115,21 @@ class AccessScreen extends State<Access> implements AccessView {
 
   Widget _buildLoginControl() {
     return Wrap(
+      alignment: WrapAlignment.center,
       children: <Widget>[
+        Label("acessar com", textAlign: TextAlign.center),
         LoginButton(Login.google, onLogin: _controller.testRegister),
         LoginButton(Login.facebook, onLogin: _controller.testRegister)
+      ],
+    );
+  }
+
+  Widget _buildRegisterControl() {
+    return Wrap(
+      children: <Widget>[
+        RegisterInput("Digite seu peso"),
+        RegisterInput("Digite sua altura"),
+        RegisterInput("Sua data de nascimento")
       ],
     );
   }

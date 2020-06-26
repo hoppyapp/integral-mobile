@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:integral_nutry/screens/access/constants.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
 
@@ -42,6 +41,8 @@ class LoginController extends _LoginStreams implements AccessControl {
   /// Get login status stream
   Stream<VisibilityAction> get visibilityStream => super._visibilityStream.stream;
 
+  /// Login Controller
+  /// Constructor
   LoginController(this._view): super() {
 
     Future.delayed(Duration(seconds: 5), () {
@@ -50,23 +51,30 @@ class LoginController extends _LoginStreams implements AccessControl {
   }
 
   @override
+  /// Load control to the user
   Widget loadControl(AsyncSnapshot<VisibilityAction> snapshot) {
 
     if(!snapshot.hasData) return Container();
 
     switch(snapshot.data) {
 
+      // Hide login to show register
       case VisibilityAction.hideLogin: return _view.buildControl(show: false, onEnd: () {
         super._visibilityStream.add(VisibilityAction.showRegister);
       });
 
+      // Show register
+      case VisibilityAction.showRegister: return _view.buildControl(show: true, register: true);
+
+      // Show register
       case VisibilityAction.showLogin: return _view.buildControl(show: true);
 
+      // Hide register to show login
       case VisibilityAction.hideRegister: return _view.buildControl(show: false, register: true, onEnd: () {
         super._visibilityStream.add(VisibilityAction.showLogin);
       });
 
-      case VisibilityAction.showRegister: return _view.buildControl(show: true, register: true);
+      default: Exception(snapshot.data);
 
     }
 
