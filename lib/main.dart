@@ -33,6 +33,11 @@ class Application extends StatelessWidget {
         routes: {
           Access.route: (BuildContext context) => Access()
         },
+
+        // Debugs
+        // showPerformanceOverlay: true,
+        // showSemanticsDebugger: true,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
