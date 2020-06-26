@@ -7,6 +7,7 @@ class Label extends Text {
   Label(
       String label, {
         Key key,
+        TextAlign textAlign,
         FontWeight fontWeight = FontWeight.normal,
         double fontSize = 18,
         Color fontColor = Colors.black38,
@@ -14,6 +15,7 @@ class Label extends Text {
       }): super(
       label,
       key: key,
+      textAlign: textAlign,
       style: TextStyle(
         decoration: TextDecoration.none,
         color: fontColor,
@@ -27,6 +29,7 @@ class Label extends Text {
   Label.rich(
       TextSpan text, {
         Key key,
+        TextAlign textAlign,
         FontWeight fontWeight = FontWeight.normal,
         double fontSize = 18,
         Color fontColor = Colors.black38,
@@ -34,6 +37,7 @@ class Label extends Text {
       }): super.rich(
       text,
       key: key,
+      textAlign: textAlign,
       style: TextStyle(
         decoration: TextDecoration.none,
         color: fontColor,
