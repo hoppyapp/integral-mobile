@@ -10,3 +10,17 @@ void setSystemBarStyle({ bool isDark = true }) {
     systemNavigationBarIconBrightness: Brightness.dark
   ));
 }
+
+void setSystemOrientation({ bool landscape = false }) {
+  SystemChrome.setPreferredOrientations(
+    landscape ? [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+    ] : [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]
+  );
+}
