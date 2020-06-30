@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:integral_nutry/screens/access/constants.dart';
 import 'package:integral_nutry/shared/arquitecture.dart';
 
@@ -35,7 +36,12 @@ class _LoginStreams implements Controller {
 class LoginController extends _LoginStreams implements AccessControl {
 
   final AccessView _view;
-  bool autoLogin = true;
+  final GoogleSignIn _google = GoogleSignIn(scopes: <String>[
+    /// Link to see scopes: https://developers.google.com/identity/protocols/oauth2/scopes
+    "profile",
+    "email"
+  ]);
+  bool _logining = false;
 
   @override
   /// Get login status stream
@@ -48,6 +54,43 @@ class LoginController extends _LoginStreams implements AccessControl {
     Future.delayed(Duration(seconds: 5), () {
       super._visibilityStream.add(VisibilityAction.showLogin);
     });
+  }
+
+  Future<void> _googleSignIn() async {
+    try {
+
+      GoogleSignInAccount account = await _google.signIn();
+
+      print(account);
+
+    } catch(e) {
+      throw e;
+    }
+  }
+
+  @override
+  Function toLogin(Login login) {
+    return () {
+      if(!_logining) {
+        _logining = !_logining;
+        switch(login) {
+          case Login.google:
+            _googleSignIn().then((void _) {
+              // Show register
+
+            }, onError: (e) {
+              print("[ google_sign_in ] error: $e");
+              _logining = !_logining;
+            });
+            break;
+
+          case Login.facebook:
+            break;
+
+          default: Exception(login);
+        }
+      }
+    };
   }
 
   @override

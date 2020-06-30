@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1080702789813",
+    "firebase_url": "https://integral-nutty.firebaseio.com",
+    "project_id": "integral-nutty",
+    "storage_bucket": "integral-nutty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080702789813:android:3bf8cd0298599b9372f6fc",
+        "android_client_info": {
+          "package_name": "com.integralnutry.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080702789813-5spkgtabekrf0237rfgcct24a0u8n732.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.integralnutry.app",
+            "certificate_hash": "e8e80e8a8fce691bd6e0cca1ad17d9a745a7d9d8"
+          }
+        },
+        {
+          "client_id": "1080702789813-j81q7sc2tp65817cujsn3u8ufcu4m0mj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4oH5GSDZnogOmmTUeDV2VFp64MRI1Npw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080702789813-j81q7sc2tp65817cujsn3u8ufcu4m0mj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

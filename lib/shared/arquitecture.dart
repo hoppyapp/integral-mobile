@@ -35,4 +35,6 @@ abstract class AccessControl implements Controller {
 
   void textLogin();
 
+  Function toLogin(Login login);
+
 }

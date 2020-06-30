@@ -1,11 +1,15 @@
 buildscript {
     repositories {
-        google()
+        google()  // Google's Maven repository
         jcenter()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
+
+        // As part of enabling Google APIs or Firebase services in your Android application
+        // you may have to add the google-services plugin
+        classpath 'com.google.gms:google-services:4.3.3'
     }
 }
 

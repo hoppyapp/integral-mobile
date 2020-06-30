@@ -118,8 +118,8 @@ class AccessScreen extends State<Access> implements AccessView {
       alignment: WrapAlignment.center,
       children: <Widget>[
         Label("acessar com", textAlign: TextAlign.center),
-        LoginButton(Login.google, onLogin: _controller.testRegister),
-        LoginButton(Login.facebook, onLogin: _controller.testRegister)
+        LoginButton(Login.google, onLogin: _controller.toLogin(Login.google)),
+        LoginButton(Login.facebook, onLogin: _controller.toLogin(Login.facebook))
       ],
     );
   }
