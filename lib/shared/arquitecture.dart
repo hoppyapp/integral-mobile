@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:integral_nutry/screens/access/constants.dart';
 
+///
+/// ======================= GENERICS INTERFACES =======================
+///
+
+abstract class Model {
+
+  String toString();
+
+  Map<String, dynamic> toJson();
+
+}
+
 abstract class Controller {
 
   void dispose();
